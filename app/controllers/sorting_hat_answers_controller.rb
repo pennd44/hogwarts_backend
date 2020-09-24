@@ -1,0 +1,2 @@
+class SortingHatAnswersController < ApplicationController
+end
