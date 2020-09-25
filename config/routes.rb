@@ -10,5 +10,10 @@ Rails.application.routes.draw do
 
   get "/student_characters", to: "characters#student_characters" 
   get "/teacher_characters", to: "characters#teacher_characters"
+  get "/gryff_students", to: "characters#gryff_students"
+  get "/ravenclaw_students", to: "characters#ravenclaw_students"
+  get "/hufflepuff_students", to: "characters#hufflepuff_students"
+  get "/slytherin_students", to: "characters#slytherin_students"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
