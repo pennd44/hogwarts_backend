@@ -220,6 +220,22 @@ cr_q4 = AssignmentQuestion.create(
 
 cr.assignment_questions << [cr_q1, cr_q2, cr_q3, cr_q4]
 
+setting = Assignment.create(name: "Setting")
+setting_q1 = AssignmentQuestion.create(
+    question: 'TODO: Enter interesting quote'
+)
+setting_q2 = AssignmentQuestion.create(
+    question: 'What is the mood of the passage?'
+)
+setting_q3 = AssignmentQuestion.create(
+    question: 'What is one example of imagery that contributes to this mood?'
+)
+setting_q4 = AssignmentQuestion.create(
+    question: 'Identify a second type of imagery in the passage that contributes to this mood.'
+)
+
+setting.assignment_questions << [setting_q1, setting_q2, setting_q3, setting_q4]
+
 
 
 
