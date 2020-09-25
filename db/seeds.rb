@@ -242,6 +242,12 @@ setting_q4 = AssignmentQuestion.create(
 
 setting.assignment_questions << [setting_q1, setting_q2, setting_q3, setting_q4]
 
+User.create(
+    first_name: "Christina",
+    last_name: "Sohn",
+    username: "chsohn",
+    is_student: true
+)
 
 
 
