@@ -4,5 +4,6 @@ class User < ApplicationRecord
     has_many :student_assignments
     has_many :assignments, through: :student_assignments
     has_many :announcements
+    belongs_to :character, optional: true
 
 end

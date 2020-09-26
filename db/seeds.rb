@@ -15,6 +15,7 @@ SortingHatQuestion.destroy_all
 SortingHatAnswer.destroy_all
 Assignment.destroy_all
 AssignmentQuestion.destroy_all
+User.destroy_all
 
 response = RestClient.get("http://hp-api.herokuapp.com/api/characters/")
 data = JSON.load(response)
