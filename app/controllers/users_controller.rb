@@ -30,7 +30,12 @@ class UsersController < ApplicationController
 
         if user.valid?
             user.save
-            render json: {user: user}, status: :created 
+            
+            render json: {
+                username: user.username,
+                user_id: user.id,
+                token: encode_token({user_id: user.id})}, status: :created 
+            #render json: {user: user}, status: :created 
         else   
             render json: {error: "Failed to create user"}, status: :not_acceptable 
         end
@@ -45,6 +50,6 @@ class UsersController < ApplicationController
     end
 
     def signup_params
-        params.permit(:username, :password, :first_name, :last_name)
+        params.permit(:username, :password, :first_name, :last_name, :is_student)
     end
 end
