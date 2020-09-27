@@ -211,10 +211,10 @@ a6d = SortingHatAnswer.create(
 
 q6.sorting_hat_answers << [a6a, a6b, a6c, a6d]
 
-cr = Assignment.create(name: "Close Reading")
-cr_q1 = AssignmentQuestion.create(
-    question: 'You flatter me," said Dumbledore calmly. "Voldemort had powers I will never have." (Chapter 1, Harry Potter and the Sorcerer\'s Stone'
-)
+cr = Assignment.create(
+    name: "Close Reading",
+    prompt: 'You flatter me," said Dumbledore calmly. "Voldemort had powers I will never have." (Chapter 1, Harry Potter and the Sorcerer\'s Stone')
+
 cr_q2 = AssignmentQuestion.create(
     question: 'What is happening in the quote? Who is the speaker talking to?'
 )
@@ -225,12 +225,10 @@ cr_q4 = AssignmentQuestion.create(
     question: 'What does it call for us as human beings to do?'
 )
 
-cr.assignment_questions << [cr_q1, cr_q2, cr_q3, cr_q4]
+cr.assignment_questions << [cr_q2, cr_q3, cr_q4]
 
-setting = Assignment.create(name: "Setting")
-setting_q1 = AssignmentQuestion.create(
-    question: 'TODO: Enter interesting quote'
-)
+setting = Assignment.create(name: "Setting", prompt: 'TODO: Enter interesting quote')
+
 setting_q2 = AssignmentQuestion.create(
     question: 'What is the mood of the passage?'
 )
@@ -241,14 +239,24 @@ setting_q4 = AssignmentQuestion.create(
     question: 'Identify a second type of imagery in the passage that contributes to this mood.'
 )
 
-setting.assignment_questions << [setting_q1, setting_q2, setting_q3, setting_q4]
+setting.assignment_questions << [setting_q2, setting_q3, setting_q4]
 
-User.create(
+c = User.create(
     first_name: "Christina",
     last_name: "Sohn",
     username: "chsohn",
     is_student: true
 )
+
+m = User.create(
+    first_name: "Minerva",
+    last_name: "McGonagall",
+    username: "mm",
+    is_student: false
+)
+
+m.students << c
+
 
 
 
