@@ -6,4 +6,6 @@ class User < ApplicationRecord
     has_many :announcements
     belongs_to :character, optional: true
 
+    has_secure_password
+
 end
