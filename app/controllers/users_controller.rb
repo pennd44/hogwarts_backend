@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    skip_before_action :logged_in?, only: [:create]
+    
     def index 
         users = User.all 
         render json: users, include: [:character, :teacher], except: [:password_digest]
