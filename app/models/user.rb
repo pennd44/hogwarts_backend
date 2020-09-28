@@ -8,4 +8,20 @@ class User < ApplicationRecord
 
     has_secure_password
 
+    def full_name 
+        first_name + " " + last_name 
+    end
+
+    def teachers_students 
+        User.all.select do |student| 
+            student.teacher_id == self.id 
+        end
+    end
+
+    def all_assignments
+        StudentAssignment.all.select do |assignment|
+            assignment.student_id == self.id 
+        end
+    end
+
 end
