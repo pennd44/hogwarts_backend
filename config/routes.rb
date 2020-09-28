@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get "/ravenclaw_students", to: "characters#ravenclaw_students"
   get "/hufflepuff_students", to: "characters#hufflepuff_students"
   get "/slytherin_students", to: "characters#slytherin_students"
+  get "/gryffindor_teachers", to: "characters#gryff_teachers"
+  get "/ravenclaw_teachers", to: "characters#ravenclaw_teachers"
+  get "/hufflepuff_teachers", to: "characters#hufflepuff_teachers"
+  get "/slytherin_teachers", to: "characters#slytherin_teachers"
   get "/teachers", to: "users#teachers"
 
   post "/login", to: "auth#create"
