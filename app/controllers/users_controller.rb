@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     
     def index 
         users = User.all 
-        render json: users, include: [:character, :teacher], except: [:password_digest], methods: [:all_assignments, :teachers_students, :full_name]
+        render json: users, include: [:character, :teacher, :students => {include: :student_assignments}], except: [:password_digest], methods: [:full_name]
     end
 
     def show
@@ -23,8 +23,10 @@ class UsersController < ApplicationController
         teachers = User.all.select do |user| 
             user.is_student == false
         end 
-        render json: teachers, methods: [:full_name, :teachers_students ]
+        render json: teachers, include: [:students => {include: [:student_assignments => {include: [:assignment]}]}], methods: [:full_name]
     end
+
+
 
     def create
         user = User.new(signup_params)
