@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     
     def index 
         users = User.all 
-        render json: users, include: [:character, :teacher], except: [:password_digest], methods: [:all_assignments]
+        render json: users, include: [:character, :teacher], except: [:password_digest], methods: [:all_assignments, :teachers_students, :full_name]
     end
 
     def show
