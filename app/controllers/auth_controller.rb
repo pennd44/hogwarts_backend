@@ -10,7 +10,7 @@ class AuthController < ApplicationController
                 user_id: user.id,
                 token: encode_token({user_id: user.id})}, status:200 
         else 
-            render json:{error: "Invalid username and password"}
+            render json:{errors: ["Invalid username and password"]}
         end
     end
 end
