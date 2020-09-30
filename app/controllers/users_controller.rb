@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         user = User.find_by(id: params[:id])
         
         user.update(user_params)
-        render json: user, include: [:character, :teacher, :student_assignments => {include: [:assignment]}, :students => {include: [:student_assignments => {include: [:assignment]}]}], except: [:password_digest], methods: [:full_name]
+        render json: user, include: [:character, :teacher => {include: [:announcements]}, :student_assignments => {include: [:assignment]}, :students => {include: [:student_assignments => {include: [:assignment]}]}], except: [:password_digest], methods: [:full_name]
     end
 
     def teachers
