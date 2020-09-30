@@ -206,7 +206,7 @@ a6c = SortingHatAnswer.create(
 )
 
 a6d = SortingHatAnswer.create(
-    image: "https://i.pinimg.com/originals/25/14/ca/2514ca80f7fc7ffba5bb8c1a77fa805f.jpg", 
+    image: "https://vignette.wikia.nocookie.net/harrypotter/images/c/ce/Advanced_Potion-Making.png/revision/latest/top-crop/width/360/height/450?cb=20161126191231", 
     house: "s",
     text: "Potions"
 )
