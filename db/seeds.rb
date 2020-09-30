@@ -9,6 +9,7 @@
 
 require 'pry'
 require 'rest-client'
+require 'faker'
 
 Character.destroy_all
 SortingHatQuestion.destroy_all
@@ -16,6 +17,7 @@ SortingHatAnswer.destroy_all
 Assignment.destroy_all
 AssignmentQuestion.destroy_all
 User.destroy_all
+StudentAssignment.destroy_all
 
 response = RestClient.get("http://hp-api.herokuapp.com/api/characters/")
 data = JSON.load(response)
@@ -58,7 +60,7 @@ a1d = SortingHatAnswer.create(
     text: "Find the loophole and take advantage of it"
 )
 
-q1.sorting_hat_answers << [a1a, a1b, a1c, a1d]
+q1.sorting_hat_answers << [ a1b, a1c, a1a, a1d]
 
 q2 = SortingHatQuestion.create(
     number: 2, 
@@ -89,7 +91,7 @@ a2d = SortingHatAnswer.create(
     text: "Screech Owl"
 )
 
-q2.sorting_hat_answers << [a2a, a2b, a2c, a2d]
+q2.sorting_hat_answers << [a2b, a2a, a2d, a2c]
 
 q3= SortingHatQuestion.create(
     number: 3, 
@@ -117,7 +119,7 @@ a3d = SortingHatAnswer.create(
     text: "Seek to make allies with the troll to intimidate others"
 )
 
-q3.sorting_hat_answers << [a3a, a3b, a3c, a3d]
+q3.sorting_hat_answers << [a3c, a3a, a3d, a3b ]
 
 
 q4= SortingHatQuestion.create(
@@ -149,7 +151,7 @@ a4d = SortingHatAnswer.create(
     image: "https://vignette.wikia.nocookie.net/harrypotter/images/6/67/Superhuman_strength.png/revision/latest/window-crop/width/200/x-offset/16/y-offset/0/window-width/248/window-height/247?cb=20150112124517"
 )
 
-q4.sorting_hat_answers << [a4a, a4b, a4c, a4d]
+q4.sorting_hat_answers << [a4c, a4d, a4a, a4b]
 
 q5= SortingHatQuestion.create(
     number: 5, 
@@ -178,7 +180,7 @@ a5d = SortingHatAnswer.create(
     text: "Power"
 )
 
-q5.sorting_hat_answers << [a5a, a5b, a5c, a5d]
+q5.sorting_hat_answers << [ a5d, a5b, a5a, a5c]
 
 q6= SortingHatQuestion.create(
     number: 6, 
@@ -227,7 +229,7 @@ cr_q4 = AssignmentQuestion.create(
 
 cr.assignment_questions << [cr_q2, cr_q3, cr_q4]
 
-setting = Assignment.create(name: "Setting", prompt: 'TODO: Enter interesting quote')
+setting = Assignment.create(name: "Setting", prompt: '"Here too snow lay on the trees all around and it was bitterly cold, but they were at least protected from the wind. They spent most of the day inside the tent, huddled for warmth around the useful bright blue flames that Hermione was so adept at producing, and which could be scooped up and carried around in a jar." (Chapter 19, Harry Potter and the Deathly Hallows)')
 
 setting_q2 = AssignmentQuestion.create(
     question: 'What is the mood of the passage?'
@@ -245,17 +247,52 @@ c = User.create(
     first_name: "Christina",
     last_name: "Sohn",
     username: "chsohn",
-    is_student: true
+    is_student: true,
+    password: "password"
 )
 
 m = User.create(
     first_name: "Minerva",
     last_name: "McGonagall",
     username: "mm",
-    is_student: false
+    is_student: false,
+    password: "password"
 )
 
 m.students << c
+
+
+10.times {
+    User.create(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        username: Faker::Name.initials,
+        is_student: true, 
+        teacher: m,
+        password: "password",
+        character: Character.students.sample
+    )
+}
+
+s = User.create(
+    first_name: "Severus",
+    last_name: "Snape",
+    username: "ss",
+    is_student: false,
+    password: "password"
+)
+
+10.times {
+    User.create(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        username: Faker::Name.initials,
+        is_student: true, 
+        teacher: s,
+        password: "password",
+        character: Character.students.sample
+    )
+}
 
 
 

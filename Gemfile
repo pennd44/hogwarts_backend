@@ -45,3 +45,5 @@ gem "jwt", "~> 2.2"
 gem "rest-client"
 
 gem 'pry', '~> 0.13.1'
+
+gem 'faker'
