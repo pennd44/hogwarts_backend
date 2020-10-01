@@ -215,7 +215,7 @@ q6.sorting_hat_answers << [a6a, a6b, a6c, a6d]
 
 cr = Assignment.create(
     name: "Close Reading",
-    prompt: 'You flatter me," said Dumbledore calmly. "Voldemort had powers I will never have." (Chapter 1, Harry Potter and the Sorcerer\'s Stone')
+    prompt: 'You flatter me," said Dumbledore calmly. "Voldemort had powers I will never have." (Chapter 1, Harry Potter and the Sorcerer\'s Stone)')
 
 cr_q2 = AssignmentQuestion.create(
     question: 'What is happening in the quote? Who is the speaker talking to?'
